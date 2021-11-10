@@ -8,6 +8,7 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
+  const [userData, setUserData] = useState({});
   const { loading, data } = useQuery(QUERY_ME);
   const [removeBook, {error}] = useMutation(REMOVE_BOOK);
 
@@ -48,9 +49,8 @@ const SavedBooks = () => {
     }
 
     try {
-      const {data} = await removeBook({
-        variables: {bookId},
-      });
+      const response = await deleteBook(bookId, token);
+
       
       if (!response.ok) {
         throw new Error('something went wrong!');
