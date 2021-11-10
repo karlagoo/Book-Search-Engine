@@ -11,8 +11,6 @@ const SavedBooks = () => {
   const [userData, setUserData] = useState({});
   const { loading, data } = useQuery(QUERY_ME);
   const [removeBook, {error}] = useMutation(REMOVE_BOOK);
-
-  const userData = data?.me || {};
   
   const userDataLength = Object.keys(userData).length;
 
